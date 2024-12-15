@@ -11,6 +11,9 @@ import Lottie
 struct SplashScreen: View {
     var body: some View {
         ZStack {
+            Color.backgroundColor
+                .edgesIgnoringSafeArea(.all)
+            
             VStack {
                 LottieView(animation: .named("splash"))
                     .playing(loopMode: .playOnce)
