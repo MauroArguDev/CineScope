@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct GenreResponse {
+struct GenreResponse: Codable {
     let genres: [Genre]
 }

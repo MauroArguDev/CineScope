@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A1B26512D0CF33900EED009 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 6A1B26502D0CF33900EED009 /* CombineMoya */; };
 		6A1B26602D0F531500EED009 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6A1B265F2D0F531500EED009 /* Lottie */; };
+		6AAEDD652D19B83D00007698 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 6AAEDD642D19B83D00007698 /* CombineMoya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A1B26512D0CF33900EED009 /* CombineMoya in Frameworks */,
+				6AAEDD652D19B83D00007698 /* CombineMoya in Frameworks */,
 				6A1B26602D0F531500EED009 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,8 +72,8 @@
 			);
 			name = CineScope;
 			packageProductDependencies = (
-				6A1B26502D0CF33900EED009 /* CombineMoya */,
 				6A1B265F2D0F531500EED009 /* Lottie */,
+				6AAEDD642D19B83D00007698 /* CombineMoya */,
 			);
 			productName = CineScope;
 			productReference = 6A1B26352D0CF12800EED009 /* CineScope.app */;
@@ -104,8 +104,8 @@
 			mainGroup = 6A1B262C2D0CF12800EED009;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				6A1B264F2D0CF33900EED009 /* XCRemoteSwiftPackageReference "Moya" */,
 				6A1B265E2D0F531500EED009 /* XCRemoteSwiftPackageReference "lottie-spm" */,
+				6AAEDD632D19B83D00007698 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6A1B26362D0CF12800EED009 /* Products */;
@@ -339,14 +339,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6A1B264F2D0CF33900EED009 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.0;
-			};
-		};
 		6A1B265E2D0F531500EED009 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
@@ -355,18 +347,26 @@
 				minimumVersion = 4.5.0;
 			};
 		};
+		6AAEDD632D19B83D00007698 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6A1B26502D0CF33900EED009 /* CombineMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6A1B264F2D0CF33900EED009 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = CombineMoya;
-		};
 		6A1B265F2D0F531500EED009 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6A1B265E2D0F531500EED009 /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
+		};
+		6AAEDD642D19B83D00007698 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AAEDD632D19B83D00007698 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
