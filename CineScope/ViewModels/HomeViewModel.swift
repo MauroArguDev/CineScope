@@ -43,12 +43,13 @@ class HomeViewModel: BaseViewModel {
     
     func performSearch() {
         guard !searchQuery.isEmpty else { return }
-        
+        isLoading = true
         movieService.searchMovies(includeAdult: true, query: searchQuery, page: 1)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 self?.handleCompletion(completion)
             } receiveValue: { [weak self] response in
+                self?.isLoading = false
                 guard let response = response else {
                     self?.showAlert(message: "generic_error")
                     return

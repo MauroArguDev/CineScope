@@ -19,17 +19,17 @@ struct SearchableItemView: View {
                 AsyncImage(url: URL(string: movie.backdropURL)) { image in
                     image
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                 } placeholder: {
                     ZStack {
                         Color.gray.opacity(0.3)
                         Image("imagePlaceholder")
                             .resizable()
-                            .scaledToFit()
+                            .scaledToFill()
                     }
                 }
                 .frame(width: 120, height: 90)
-                .cornerRadius(8)
+                .cornerRadius(12)
                 .clipped()
                 
                 Text(movie.title)
