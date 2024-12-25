@@ -25,7 +25,9 @@ struct HomeScreen: View {
                             .padding(.top, 32 )
                     } else {
                         List(viewModel.searchResults) { movie in
-                            Text(movie.title)
+                            SearchableItemView(movie: movie) {
+                                print(movie.overview)
+                            }
                         }
                         .listStyle(PlainListStyle())
                     }
@@ -37,10 +39,6 @@ struct HomeScreen: View {
                 }
                 
                 Spacer()
-            }
-            .searchable(text: $viewModel.searchQuery, prompt: "search")
-            .onChange(of: viewModel.searchQuery) { _ in
-                viewModel.performSearch()
             }
         }.background(Color.backgroundColor)
     }

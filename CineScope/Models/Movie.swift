@@ -19,14 +19,14 @@ struct Movie: Codable, Identifiable {
     let voteCount: Int?
     var adult: Bool? = false
     
-    var backdropURL: URL {
-        guard let backdropPath else { return URL(string: "")! }
-        return URL(string: "https://image.tmdb.org/t/p/w500/\(backdropPath)")!
+    var backdropURL: String {
+        guard let backdropPath else { return "" }
+        return "https://image.tmdb.org/t/p/w500/\(backdropPath)"
     }
     
-    var posterURL: URL {
-        guard let posterPath else { return URL(string: "")! }
-        return URL(string: "https://image.tmdb.org/t/p/w500/\(posterPath)")!
+    var posterURL: String {
+        guard let posterPath else { return "" }
+        return "https://image.tmdb.org/t/p/w500/\(posterPath)"
     }
     
     enum CodingKeys: String, CodingKey {
