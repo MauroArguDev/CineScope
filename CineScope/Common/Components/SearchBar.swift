@@ -10,34 +10,46 @@ import SwiftUI
 struct SearchBar: View {
     @Binding var text: String
     var onSearch: () -> Void
+    @FocusState private var isFocused: Bool
     
     var body: some View {
-        HStack(spacing: 2) {
+        HStack(spacing: 4) {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(Color.gray)
                 
-                TextField("search", text: $text, onEditingChanged: { _ in
-                    onSearch()
-                })
-                .foregroundColor(.black)
+                ZStack(alignment: .leading) {
+                    if text.isEmpty {
+                        Text("search")
+                            .foregroundColor(Color.textColor)
+                    }
+                    
+                    TextField("", text: $text, onEditingChanged: { _ in
+                        onSearch()
+                    })
+                    .foregroundColor(Color.textColor)
+                    .autocorrectionDisabled(true)
+                    .textInputAutocapitalization(.never)
+                    .focused($isFocused)
+                }
             }
             .padding(10)
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
+            .background(Color.backgroundColor)
+            .cornerRadius(24)
             .overlay(
-                RoundedRectangle(cornerRadius: 8)
+                RoundedRectangle(cornerRadius: 24)
                     .stroke(Color.gray, lineWidth: 1)
             )
-            .padding(.horizontal)
+            .animation(.easeInOut(duration: 0.2), value: isFocused)
             
-            if !text.isEmpty {
+            if isFocused {
                 Button(action: {
                     text = ""
-                    onSearch()
+                    isFocused = false
                 }) {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(Color.textColor)
+                        .transition(.opacity.combined(with: .scale))
                 }
             }
         }
