@@ -47,29 +47,43 @@ extension TMBDProvider: TargetType {
     }
     
     var task: Task {
-        let apiKey = ""
+        let language = Bundle.main.preferredLocalizations.first ?? "en"
         
         switch self {
         case .authentication, .getGenres:
-            return .requestParameters(parameters: ["api_key": apiKey], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["language": language], encoding: URLEncoding.queryString)
         case let .getPopularMovies(page):
-            return .requestParameters(parameters: ["api_key": apiKey, "page": page], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["language": language, "page": page], encoding: URLEncoding.queryString)
         case let .getTopRatedMovies(page):
-            return .requestParameters(parameters: ["api_key": apiKey, "page": page], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["language": language, "page": page], encoding: URLEncoding.queryString)
         case let .getNowPlayingMovies(page):
-            return .requestParameters(parameters: ["api_key": apiKey, "page": page], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["language": language, "page": page], encoding: URLEncoding.queryString)
         case let .getUpcomingMovies(page):
-            return .requestParameters(parameters: ["api_key": apiKey, "page": page], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["language": language, "page": page], encoding: URLEncoding.queryString)
         case let .searchMovie(includeAdult, query, page):
-            return .requestParameters(parameters: ["api_key": apiKey, "include_adult": includeAdult, "query": query, "page": page], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["language": language, "include_adult": includeAdult, "query": query, "page": page], encoding: URLEncoding.queryString)
         }
     }
     
     var headers: [String: String]? {
-        return ["Content-Type": "application/json"]
+        let key = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MzJmNTliZDhmMDMyODIxNWQ5MzI4Mzc5YmVmMjA2ZiIsIm5iZiI6MTYyMDk0MjYxMS42NjYsInN1YiI6IjYwOWQ5ZjEzNWIzNzBkMDA1NzAxNDZhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t6OWmdKGlk6raIxr_rkhE2ib5Jr5KIRsM0taRKFic9c"
+        let apiKey = "Bearer \(key)"
+        
+        return [
+            "Content-Type": "application/json",
+            "Authorization": apiKey
+        ]
     }
     
     var validationType: ValidationType {
         return .successCodes
+    }
+}
+
+var language: String {
+    if Bundle.main.preferredLocalizations.first == "es" || Bundle.main.preferredLocalizations.first == "en" {
+        return Bundle.main.preferredLocalizations.first ?? "en"
+    } else {
+        return "en"
     }
 }
