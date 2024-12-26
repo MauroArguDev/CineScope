@@ -66,7 +66,7 @@ extension TMBDProvider: TargetType {
     }
     
     var headers: [String: String]? {
-        let key = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MzJmNTliZDhmMDMyODIxNWQ5MzI4Mzc5YmVmMjA2ZiIsIm5iZiI6MTYyMDk0MjYxMS42NjYsInN1YiI6IjYwOWQ5ZjEzNWIzNzBkMDA1NzAxNDZhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t6OWmdKGlk6raIxr_rkhE2ib5Jr5KIRsM0taRKFic9c"
+        let key = ""
         let apiKey = "Bearer \(key)"
         
         return [

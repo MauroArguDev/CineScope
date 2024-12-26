@@ -49,6 +49,7 @@ struct SearchableItemView: View {
             .background(Color.backgroundColor)
             .contentShape(Rectangle())
         }
+        .listRowBackground(Color.backgroundColor)
         
     }
 }
