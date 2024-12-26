@@ -37,6 +37,7 @@
       }
     },
     "explore_movies" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -117,6 +118,12 @@
         }
       }
     },
+    "Now Playing" : {
+
+    },
+    "Popular Movies" : {
+
+    },
     "search" : {
       "localizations" : {
         "en" : {
@@ -148,6 +155,12 @@
           }
         }
       }
+    },
+    "Top Rated" : {
+
+    },
+    "Upcoming Movies" : {
+
     }
   },
   "version" : "1.0"

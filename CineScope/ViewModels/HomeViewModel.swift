@@ -23,6 +23,7 @@ class HomeViewModel: BaseViewModel {
     override init() {
         super.init()
         setupSearchSubscription()
+        fetchMovies()
     }
     
     private func setupSearchSubscription() {
@@ -41,6 +42,13 @@ class HomeViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
     
+    private func fetchMovies() {
+        fetchNowPlayingMovies(page: 1)
+        fetchPopularMovies(page: 1)
+        fetchTopRatedMovies(page: 1)
+        fetchUpcomingMovies(page: 1)
+    }
+    
     func performSearch() {
         guard !searchQuery.isEmpty else { return }
         isLoading = true
@@ -55,6 +63,62 @@ class HomeViewModel: BaseViewModel {
                     return
                 }
                 self?.searchResults = response.results
+            }.store(in: &cancellables)
+    }
+    
+    func fetchNowPlayingMovies(page: Int) {
+        movieService.getNowPlayingMovies(page: page)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.handleCompletion(completion)
+            } receiveValue: { [weak self] response in
+                guard let response = response else {
+                    self?.showAlert(message: "generic_error")
+                    return
+                }
+                self?.nowPlayingMovies = response.results
+            }.store(in: &cancellables)
+    }
+    
+    func fetchPopularMovies(page: Int) {
+        movieService.getPopularMovies(page: page)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.handleCompletion(completion)
+            } receiveValue: { [weak self] response in
+                guard let response = response else {
+                    self?.showAlert(message: "generic_error")
+                    return
+                }
+                self?.popularMovies = response.results
+            }.store(in: &cancellables)
+    }
+    
+    func fetchTopRatedMovies(page: Int) {
+        movieService.getTopRatedMovies(page: page)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.handleCompletion(completion)
+            } receiveValue: { [weak self] response in
+                guard let response = response else {
+                    self?.showAlert(message: "generic_error")
+                    return
+                }
+                self?.topRatedMovies = response.results
+            }.store(in: &cancellables)
+    }
+    
+    func fetchUpcomingMovies(page: Int) {
+        movieService.getUpcomingMovies(page: page)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                self?.handleCompletion(completion)
+            } receiveValue: { [weak self] response in
+                guard let response = response else {
+                    self?.showAlert(message: "generic_error")
+                    return
+                }
+                self?.upcomingMovies = response.results
             }.store(in: &cancellables)
     }
 }

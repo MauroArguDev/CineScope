@@ -25,7 +25,7 @@ struct HomeScreen: View {
                         if viewModel.searchResults.isEmpty && !viewModel.isLoading {
                             Text("no_results_found")
                                 .foregroundColor(.textColor)
-                                .padding(.top, 32 )
+                                .padding(.top, 32)
                         } else {
                             List(viewModel.searchResults) { movie in
                                 SearchableItemView(movie: movie) {
@@ -36,10 +36,91 @@ struct HomeScreen: View {
                             .scrollIndicators(.hidden)
                         }
                     } else {
-                        Text("explore_movies")
-                            .font(.subheadline)
-                            .foregroundColor(.textColor)
-                            .padding()
+                        ScrollView(showsIndicators: false) {
+                            VStack(spacing: 12) {
+                                HStack {
+                                    Text("Now Playing")
+                                        .font(.title2)
+                                        .foregroundStyle(.text)
+                                        .padding(.top, 24)
+                                    
+                                    Spacer()
+                                }
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    LazyHStack(spacing: 12) {
+                                        ForEach(viewModel.nowPlayingMovies, id: \.id) { movie in
+                                            MovieItemView(movie: movie) {}
+                                        }
+                                    }
+                                }.frame(height: 320)
+                                
+                                Spacer()
+                            }.padding(.horizontal, 24)
+                            
+                            VStack(spacing: 12) {
+                                HStack {
+                                    Text("Popular Movies")
+                                        .font(.title2)
+                                        .foregroundStyle(.text)
+                                        .padding(.top, 24)
+                                    
+                                    Spacer()
+                                }
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    LazyHStack(spacing: 12) {
+                                        ForEach(viewModel.popularMovies, id: \.id) { movie in
+                                            MovieItemView(movie: movie) {}
+                                        }
+                                    }
+                                }.frame(height: 320)
+                                
+                                Spacer()
+                            }.padding(.horizontal, 24)
+                            
+                            VStack(spacing: 12) {
+                                HStack {
+                                    Text("Top Rated")
+                                        .font(.title2)
+                                        .foregroundStyle(.text)
+                                        .padding(.top, 24)
+                                    
+                                    Spacer()
+                                }
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    LazyHStack(spacing: 12) {
+                                        ForEach(viewModel.topRatedMovies, id: \.id) { movie in
+                                            MovieItemView(movie: movie) {}
+                                        }
+                                    }
+                                }.frame(height: 320)
+                                
+                                Spacer()
+                            }.padding(.horizontal, 24)
+                            
+                            VStack(spacing: 12) {
+                                HStack {
+                                    Text("Upcoming Movies")
+                                        .font(.title2)
+                                        .foregroundStyle(.text)
+                                        .padding(.top, 24)
+                                    
+                                    Spacer()
+                                }
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    LazyHStack(spacing: 12) {
+                                        ForEach(viewModel.upcomingMovies, id: \.id) { movie in
+                                            MovieItemView(movie: movie) {}
+                                        }
+                                    }
+                                }.frame(height: 320)
+                                
+                                Spacer()
+                            }.padding(.horizontal, 24)
+                        }
                     }
                     
                     Spacer()
