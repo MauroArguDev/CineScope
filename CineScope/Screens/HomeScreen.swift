@@ -37,89 +37,13 @@ struct HomeScreen: View {
                         }
                     } else {
                         ScrollView(showsIndicators: false) {
-                            VStack(spacing: 12) {
-                                HStack {
-                                    Text("Now Playing")
-                                        .font(.title2)
-                                        .foregroundStyle(.text)
-                                        .padding(.top, 24)
-                                    
-                                    Spacer()
-                                }
-                                
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack(spacing: 12) {
-                                        ForEach(viewModel.nowPlayingMovies, id: \.id) { movie in
-                                            MovieItemView(movie: movie) {}
-                                        }
-                                    }
-                                }.frame(height: 320)
-                                
-                                Spacer()
-                            }.padding(.horizontal, 24)
+                            MovieListView(title: String(localized: "now_playing"), movies: viewModel.nowPlayingMovies)
                             
-                            VStack(spacing: 12) {
-                                HStack {
-                                    Text("Popular Movies")
-                                        .font(.title2)
-                                        .foregroundStyle(.text)
-                                        .padding(.top, 24)
-                                    
-                                    Spacer()
-                                }
-                                
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack(spacing: 12) {
-                                        ForEach(viewModel.popularMovies, id: \.id) { movie in
-                                            MovieItemView(movie: movie) {}
-                                        }
-                                    }
-                                }.frame(height: 320)
-                                
-                                Spacer()
-                            }.padding(.horizontal, 24)
+                            MovieListView(title: String(localized: "popuplar_movies"), movies: viewModel.popularMovies)
                             
-                            VStack(spacing: 12) {
-                                HStack {
-                                    Text("Top Rated")
-                                        .font(.title2)
-                                        .foregroundStyle(.text)
-                                        .padding(.top, 24)
-                                    
-                                    Spacer()
-                                }
-                                
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack(spacing: 12) {
-                                        ForEach(viewModel.topRatedMovies, id: \.id) { movie in
-                                            MovieItemView(movie: movie) {}
-                                        }
-                                    }
-                                }.frame(height: 320)
-                                
-                                Spacer()
-                            }.padding(.horizontal, 24)
+                            MovieListView(title: String(localized: "top_rated"), movies: viewModel.topRatedMovies)
                             
-                            VStack(spacing: 12) {
-                                HStack {
-                                    Text("Upcoming Movies")
-                                        .font(.title2)
-                                        .foregroundStyle(.text)
-                                        .padding(.top, 24)
-                                    
-                                    Spacer()
-                                }
-                                
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    LazyHStack(spacing: 12) {
-                                        ForEach(viewModel.upcomingMovies, id: \.id) { movie in
-                                            MovieItemView(movie: movie) {}
-                                        }
-                                    }
-                                }.frame(height: 320)
-                                
-                                Spacer()
-                            }.padding(.horizontal, 24)
+                            MovieListView(title: String(localized: "upcoming_movies"), movies: viewModel.upcomingMovies)
                         }
                     }
                     
@@ -127,6 +51,30 @@ struct HomeScreen: View {
                 }
             }
         }
+    }
+    
+    @ViewBuilder
+    private func MovieListView(title: String, movies: [Movie]) -> some View {
+        VStack(spacing: 12) {
+            HStack {
+                Text(title)
+                    .font(.title2)
+                    .foregroundStyle(.text)
+                    .padding(.top, 24)
+                
+                Spacer()
+            }
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: 12) {
+                    ForEach(movies, id: \.id) { movie in
+                        MovieItemView(movie: movie) {}
+                    }
+                }
+            }.frame(height: 320)
+            
+            Spacer()
+        }.padding(.horizontal, 24)
     }
 }
 

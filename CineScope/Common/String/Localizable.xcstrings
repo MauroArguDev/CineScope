@@ -36,23 +36,6 @@
         }
       }
     },
-    "explore_movies" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Explore your favorite Movies"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Explora tus películas favoritas"
-          }
-        }
-      }
-    },
     "favorites" : {
       "localizations" : {
         "en" : {
@@ -118,11 +101,38 @@
         }
       }
     },
-    "Now Playing" : {
-
+    "now_playing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Now Playing"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presentando"
+          }
+        }
+      }
     },
-    "Popular Movies" : {
-
+    "popuplar_movies" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popular Movies"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Películas Populares"
+          }
+        }
+      }
     },
     "search" : {
       "localizations" : {
@@ -156,11 +166,37 @@
         }
       }
     },
-    "Top Rated" : {
-
+    "top_rated" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Top Rated"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mejor Valoradas"
+          }
+        }
+      }
     },
-    "Upcoming Movies" : {
-
+    "upcoming_movies" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upcoming Movies"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximos Estrenos"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
