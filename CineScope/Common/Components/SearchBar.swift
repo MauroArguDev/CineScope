@@ -14,6 +14,17 @@ struct SearchBar: View {
     
     var body: some View {
         HStack(spacing: 4) {
+            
+            if !text.isEmpty {
+                Button {
+                    text = ""
+                    isFocused = false
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.textColor)
+                }
+            }
+            
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(Color.gray)
@@ -41,6 +52,7 @@ struct SearchBar: View {
                     .stroke(Color.gray, lineWidth: 1)
             )
             .animation(.easeInOut(duration: 0.2), value: isFocused)
+            .animation(.easeInOut(duration: 0.2), value: text.isEmpty)
             
             if isFocused {
                 Button(action: {
